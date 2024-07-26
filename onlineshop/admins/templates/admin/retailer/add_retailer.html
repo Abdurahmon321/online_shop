@@ -1,0 +1,21 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<div style="margin: 30px">
+    <h2> Add retailer </h2><br>
+    <form method="post" , enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="id_username">Username:</label><br>
+        {{ form.username }}<br><br>
+
+        <label for="id_password1">Password:</label><br>
+        {{ form.password1 }}<br><br>
+
+        <label for="id_password2">Confirm Password:</label><br>
+        {{ form.password2 }}<br><br>
+
+        <button type="submit">Add retailer</button>
+    </form>
+</div>
+
+{% endblock content %}

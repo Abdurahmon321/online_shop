@@ -1,0 +1,15 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<div style="margin: 40px">
+    <h2>O'chirishni tasdiqlash</h2>
+    <p>Ism: {{ user_profile.user.username }}</p>
+    <p>Telefon: {{ user_profile.phone_number }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <p><button type="submit">O'chirishr</button> | <a href="{% url 'admin_index' %}">Bekor qilish</a></p>
+    </form>
+
+</div>
+
+{% endblock content %}

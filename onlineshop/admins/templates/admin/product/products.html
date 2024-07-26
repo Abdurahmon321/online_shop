@@ -1,0 +1,74 @@
+{% extends 'admin_base.html' %}
+{% load admin_extras %}
+{% block content %}
+{% load static %}
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style media="screen">
+        a:link {
+          text-decoration: none;
+        }
+
+        h6 {
+          text-align: center;
+        }
+
+        .row {
+          margin: 100px;
+        }
+    </style>
+</head>
+<br><br>
+<div class="container">
+    <div>
+        <a href="{% url 'add_product' %}">Add product</a>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h6 class="panel-title">Products</h6>
+        </div>
+        <table class="table table-hover" id="dev-table">
+            <thead>
+            <tr>
+
+                <th>Name</th>
+                <th>Category</th>
+                <th>Picture</th>
+                <th>Price</th>
+                <th>Created</th>
+                <th>Quantity</th>
+                <th>Author</th>
+
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            {% all_products as products %}
+            {% for p in products %}
+            <tr>
+
+                <td> {{ p.name }}</td>
+                <td>{{ p.category }}</td>
+                {% if p.img1 %}
+                <td><img src="{{ p.img1.url }}" alt="Profile Pic" height="40px" width="40px"/></td>
+                {% endif %}
+
+                <td>{{ p.price }}</td>
+                <td>{{ p.created }}</td>
+                <td>{{ p.quantity }}</td>
+                <td>{{ p.author.username }}</td>
+
+                <td><a class="btn btn-primary btn-xs" href="#"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a class="btn btn-danger btn-xs" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}
